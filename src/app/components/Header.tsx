@@ -1,15 +1,24 @@
 import Link from "next/link";
+import { FaUserCircle } from "react-icons/fa";
+import { MdDarkMode } from "react-icons/md";
 
 const Header = () => {
   return (
     <header className="py-10 px-4 container mx-auto text-xl flex flex-wrap md:flex-nowrap items-center justify-between">
       <div className="flex items-center w-full md:2/3">
-        <Link href="/"> <span className="font-bold text-blue-600">Flux</span>hotels</Link>
+        <Link href="/">
+          {" "}
+          <span className="font-bold text-blue-600">Flux</span>hotels
+        </Link>
         <ul className="flex items-center ml-5">
           <li className="flex items-center cursor-pointer">
-            <Link href="/user">Icons</Link>
+            <Link href="/user">
+              <FaUserCircle />
+            </Link>
           </li>
-          <li className="ml-2 cursor-pointer">Icons</li>
+          <li className="ml-5 cursor-pointer">
+            <MdDarkMode />
+          </li>
         </ul>
       </div>
 
