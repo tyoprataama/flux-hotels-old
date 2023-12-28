@@ -15,7 +15,7 @@ const Header = () => {
         </Link>
         <ul className="flex items-center ml-5">
           <li className="flex items-center cursor-pointer">
-            <Link href="/user">
+            <Link href="/auth">
               <FaUserCircle />
             </Link>
           </li>
