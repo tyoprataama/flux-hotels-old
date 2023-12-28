@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const Auth = () => {
   const inputStyles =
-    "border border-black dark:border-white sm:text-sm text-black rounded-full block w-full p-3 focus:outline-none";
+    "border border-black dark:border-white sm:text-xs text-black rounded-full block w-full p-3 focus:outline-none";
   return (
     <section className="container mx-auto h-screen">
       <div className="p-6 space-y-4 md:space-y-6 sm:p-8 w-80 md:w-[70%] mx-auto">
