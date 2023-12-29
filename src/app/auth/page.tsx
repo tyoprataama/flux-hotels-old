@@ -1,10 +1,25 @@
-import React from "react";
+"use client";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { useFormik } from "formik";
+import { formValidationSchema } from "../constant";
 
 const Auth = () => {
   const inputStyles =
     "border border-black dark:border-white sm:text-xs text-black rounded-full block w-full p-3 focus:outline-none";
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
+    validationSchema: formValidationSchema,
+    onSubmit: (values) => {
+      console.log("Form values: ", values);
+    },
+  });
+
   return (
     <section className="container mx-auto h-screen">
       <div className="p-6 space-y-4 md:space-y-6 sm:p-8 w-80 md:w-[70%] mx-auto">
@@ -17,32 +32,61 @@ const Auth = () => {
           </span>
         </div>
 
-        <form className="flex flex-col space-y-4 md:space-y-6 items-center">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="flex flex-col space-y-4 md:space-y-6 items-center"
+        >
+          {formik.touched.name && formik.errors.name && (
+            <div className="text-red-500 self-start text-xs px-2">
+              {formik.errors.name}
+            </div>
+          )}
           <input
             type="text"
             name="name"
             id="name"
             placeholder="Your Name"
             className={inputStyles}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.name}
             required
           />
+
+          {formik.touched.email && formik.errors.email && (
+            <div className="text-red-500 self-start text-xs px-2">
+              {formik.errors.email}
+            </div>
+          )}
           <input
             type="email"
             name="email"
             id="email"
             placeholder="example@email.com"
             className={inputStyles}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
             required
           />
+
+          {formik.touched.password && formik.errors.password && (
+            <div className="text-red-500 self-start text-xs px-2">
+              {formik.errors.password}
+            </div>
+          )}
           <input
             type="password"
             name="password"
             id="password"
             placeholder="••••••"
-            minLength={6}
             className={inputStyles}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
             required
           />
+
           <button
             type="submit"
             className="w-[50%] bg-blue-400 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-800 hover:transition-all font-bold focus:outline-none  rounded-full text-sm px-5 py-3 text-center"
